@@ -1,0 +1,40 @@
+server:
+  servlet:
+    context-path: /vacanze
+spring:
+  profiles.active: dev
+  thymeleaf:        enabled: true
+    cache: false
+  datasource:
+    url: jdbc:postgresql://localhost/dbdemo
+    driverClassName: org.postgresql.Driver
+    username: postgresql
+    password: inside
+    initialization-mode: never
+    data:    - classpath:data-dev.sql
+  jpa:
+    generate-ddl: true    
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      show-sql: true
+      hibernate:
+        format_sql: true
+      javax:
+        persistence:
+          create-database-schemas: true
+jwt:
+  secret: jwtSecretKey
+  expiration: 86400
+
+---
+logging:
+  file:
+    name: rest-jwt-crud.log
+  pattern:
+    # http://logback.qos.ch/manual/layouts.html    console: "[%d][%-7level] [%-50.50C] [%-30.30M] %msg%n"
+    file: "[%d][%-20thread][%-7level] [%-60C{1}][%-40M] %msg%n"
+  level:
+    org.springframework.web: ERROR
+    org.hibernate: ERROR   

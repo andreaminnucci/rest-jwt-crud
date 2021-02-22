@@ -1,0 +1,9 @@
+userLogin:
+  firstName:
+    label: First Name
+  lastName:
+    label: Last Name
+  username:
+    label: Username
+  email:
+    label: Email    
